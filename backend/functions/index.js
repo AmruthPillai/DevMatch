@@ -1,9 +1,13 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp(functions.config().firebase);
+const db = admin.firestore()
+
 const request = require('request-promise');
 const _ = require('lodash');
 
 exports.pullFromGitHub = functions.https.onRequest(async (req, response) => {
-    if (req.body.access_token) {
+    if (req.body.access_token && req.body.uid) {
         const headers = {
             'User-Agent': 'DevMatch',
             'Authorization': 'token ' + req.body.access_token,
@@ -47,8 +51,10 @@ exports.pullFromGitHub = functions.https.onRequest(async (req, response) => {
             })
         }))
 
-        console.log(JSON.stringify(langMap))
+        stats.languages = langMap
 
-        response.send(repos)
+        await db.collection('user').doc(req.body.uid).set(stats)
+
+        response.send(stats)
     }
 })
