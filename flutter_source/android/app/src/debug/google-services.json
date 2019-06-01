@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "122389276370",
+    "firebase_url": "https://devmatch-hack19.firebaseio.com",
+    "project_id": "devmatch-hack19",
+    "storage_bucket": "devmatch-hack19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:122389276370:android:e95a32025dfbc604",
+        "android_client_info": {
+          "package_name": "io.flutter.hack.flutter_hack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "122389276370-h8u8att0clv7cm3mo7npjl5ps5ceik30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbSr_sL9h2MbMBppsHN9uXGZQNP5DFWNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "122389276370-h8u8att0clv7cm3mo7npjl5ps5ceik30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
