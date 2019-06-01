@@ -1,6 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:DevMatch/button.dart';
+import 'package:DevMatch/src/profile/profile_screen.dart';
+import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -42,7 +42,12 @@ class LoginScreen extends StatelessWidget {
                 ),
                 textColor: Colors.grey[900],
                 iconAlignment: Alignment.centerRight,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                  );
+                },
               ),
             ],
           ),
