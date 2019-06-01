@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hack/button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links/uni_links.dart';
 import 'dart:convert';
@@ -14,8 +15,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   StreamSubscription _subs;
-  String GITHUB_CLIENT_ID = 'Iv1.88f752f7e6b4c910';
-  String GITHUB_CLIENT_SECRET = '954b2ef4da1f0d87eb4714a01afbff97340e9bb1';
+  String githubClientID = 'Iv1.88f752f7e6b4c910';
+  String githubClientSecret = '954b2ef4da1f0d87eb4714a01afbff97340e9bb1';
 
   @override
   void initState() {
@@ -56,8 +57,8 @@ class _LoginScreenState extends State<LoginScreen> {
         "Accept": "application/json"
       },
       body: jsonEncode(GitHubLoginRequest(
-        clientId: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
+        clientId: githubClientID,
+        clientSecret: githubClientSecret,
         code: code,
       )),
     );
@@ -90,37 +91,42 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         height: double.infinity,
         color: Colors.grey[50],
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Hero(
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 30.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Hero(
                 tag: 'logo_tag',
                 child: Image.asset(
                   'assets/logo.png',
                 ),
               ),
-            ),
-            Expanded(
-              child: Center(
-                child: Text(
-                  'Find teammates for your next hackathon, smart and easy.',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.grey[800],
-                  ),
+              Text(
+                'Find teammates for your next hackathon, smart and easy.',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.grey[800],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: MaterialButton(
+              Spacer(),
+              CustomButton(
+                backgroundColor: Colors.grey[900],
+                icon: Icon(Icons.lock),
+                buttonText: Text(
+                  'Login with GitHub',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[50],
+                  ),
+                ),
+                textColor: Colors.grey[900],
+                iconAlignment: Alignment.centerRight,
                 onPressed: () async {
                   String url = "https://github.com/login/oauth/authorize" +
                       "?client_id=" +
-                      GITHUB_CLIENT_ID +
+                      githubClientID +
                       "&scope=public_repo%20read:user%20user:email";
 
                   if (await canLaunch(url)) {
@@ -133,14 +139,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     print("CANNOT LAUNCH THIS URL!");
                   }
                 },
-                color: Colors.white,
-                child: Text(
-                  'Github',
-                  style: TextStyle(color: Colors.redAccent),
-                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

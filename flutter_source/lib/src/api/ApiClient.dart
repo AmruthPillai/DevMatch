@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:DevMatch/src/model/mentor_list.dart';
+import 'package:flutter_hack/src/model/mentor_list.dart';
 import 'package:http/http.dart' as http;
 
 class GithubClient {

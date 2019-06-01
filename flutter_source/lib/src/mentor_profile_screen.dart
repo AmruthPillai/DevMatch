@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:DevMatch/src/widget/metrices_widget.dart';
+import 'package:flutter_hack/src/widget/metrices_widget.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class MentorProfile extends StatefulWidget {
