@@ -7,24 +7,18 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
+        color: Colors.grey[50],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-              'assets/logo_white.png',
-              width: 100,
-            ),
             Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: Text(
-                'The Engineer Store',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600),
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(
+                'assets/logo.png',
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: MaterialButton(

@@ -10,8 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.black,
-        accentColor: Colors.green
+        primarySwatch: Colors.blue,
       ),
       home: HomePage(),
     );
@@ -39,11 +38,18 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _handleAuth();
+//    _handleAuth();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(child: Image.asset('assets/logo.png')),
+        ),
+      ),
+    );
   }
 }
