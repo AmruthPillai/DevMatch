@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_hack/src/profile/profile_screen.dart';
 
 import 'login.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,11 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.black,
-        accentColor: Colors.green
-      ),
-      home: HomePage(),
+      theme: ThemeData(primarySwatch: Colors.blue, accentColor: Colors.green),
+      home: ProfileScreen(),
     );
   }
 }
@@ -24,7 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void _handleAuth() {
     FirebaseAuth.instance.onAuthStateChanged.listen((user) {
       if (user == null) {
@@ -35,7 +33,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-
   @override
   void initState() {
     super.initState();
@@ -44,6 +41,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ProfileScreen();
   }
 }
