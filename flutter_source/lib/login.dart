@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hack/src/profile/profile_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uni_links/uni_links.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -72,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final FirebaseUser user =
         await FirebaseAuth.instance.signInWithCredential(credential);
-
+    _store(loginResponse.accessToken, user.uid);
     return user;
   }
 
@@ -144,6 +146,15 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _store(String accessToken, String uid) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('accessToken', accessToken);
+    await prefs.setString('uid', uid);
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return ProfileScreen();
+    }));
   }
 }
 

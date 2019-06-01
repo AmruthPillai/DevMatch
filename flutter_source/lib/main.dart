@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_hack/src/profile/profile_screen.dart';
 
 import 'login.dart';
 
@@ -32,6 +33,10 @@ class _HomePageState extends State<HomePage> {
             return LoginScreen();
           }));
         });
+      }else{
+        Navigator.of(context).push(MaterialPageRoute(builder: (_){
+          return ProfileScreen();
+        }));
       }
     });
   }

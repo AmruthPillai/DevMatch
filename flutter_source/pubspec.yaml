@@ -30,7 +30,8 @@ dependencies:
   url_launcher: ^5.0.2
   uni_links: ^0.2.0
   http: ^0.12.0+1
-
+  location: ^2.3.5
+  pie_chart: ^0.9.0
   shared_preferences: ^0.5.3
 
 dev_dependencies:
