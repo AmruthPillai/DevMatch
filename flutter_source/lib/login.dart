@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hack/src/profile/profile_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -25,7 +26,11 @@ class LoginScreen extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Find teammates for your next hackathon, smart and easy.',
-                  style: TextStyle(fontSize: 25, color: Colors.grey[800],),
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.grey[800],
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
             ),
@@ -33,7 +38,10 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20.0),
               child: MaterialButton(
                 onPressed: () {
-
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                  );
                 },
                 color: Colors.white,
                 child: Text(
