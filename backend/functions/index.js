@@ -53,7 +53,7 @@ exports.pullFromGitHub = functions.https.onRequest(async (req, response) => {
 
         stats.languages = langMap
 
-        await db.collection('user').doc(req.body.uid).set(stats)
+        await db.collection('users').doc(req.body.uid).set(stats)
 
         response.send(stats)
     }
