@@ -10,7 +10,7 @@ class MentorProfile extends StatefulWidget {
 }
 
 class MentorProfileState extends State<MentorProfile> {
-  Map<String, double> dataMap = new Map() ;
+  Map<String, double> dataMap = new Map();
   @override
   void initState() {
     dataMap.putIfAbsent("Flutter", () => 75);
