@@ -6,8 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hack/src/anim/blink_animation.dart';
 import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:location/location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../mentor_profile_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -27,6 +29,10 @@ class ProfileScreenState extends State<ProfileScreen>
   bool findMode = false;
   AnimationController blinkController;
 
+  Geoflutterfire geo = Geoflutterfire();
+  Firestore _firestore = Firestore.instance;
+  Stream<List<DocumentSnapshot>> stream;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +47,7 @@ class ProfileScreenState extends State<ProfileScreen>
         controller.forward();
       }
     });
+
   }
 
   LocationData _startLocation;
@@ -106,6 +113,9 @@ class ProfileScreenState extends State<ProfileScreen>
     setState(() {
       _startLocation = location;
     });
+
+    _fetchData();
+
   }
 
   @override
@@ -230,6 +240,17 @@ class ProfileScreenState extends State<ProfileScreen>
                 ),
               )));
   }
+
+  void _fetchData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String uid = prefs.get('uid');
+    String accessToken = prefs.get('accessToken');
+
+    GeoFirePoint center = geo.point(latitude: _currentLocation.latitude, longitude: _currentLocation.longitude);
+
+    stream = geo.collection(collectionRef: Firestore.instance.collection("users")).within(center: center, radius: 1, field: 'position');
+
+  }
 }
 
 final makeCard = Card(
@@ -251,7 +272,7 @@ final makeListTile = ListTile(
       child: Icon(Icons.autorenew, color: Colors.white),
     ),
     title: Text(
-      "Introduction to Driving",
+      "Sundar Pichai",
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
     ),
     // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
