@@ -14,18 +14,30 @@ class LoginScreen extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset(
-                'assets/logo.png',
+              child: Hero(
+                tag: 'logo_tag',
+                child: Image.asset(
+                  'assets/logo.png',
+                ),
               ),
             ),
-
+            Expanded(
+              child: Center(
+                child: Text(
+                  'Find teammates for your next hackathon, smart and easy.',
+                  style: TextStyle(fontSize: 25, color: Colors.grey[800],),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 color: Colors.white,
                 child: Text(
-                  'Google',
+                  'Github',
                   style: TextStyle(color: Colors.redAccent),
                 ),
               ),

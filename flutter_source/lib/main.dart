@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'login.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,22 +24,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   void _handleAuth() {
     FirebaseAuth.instance.onAuthStateChanged.listen((user) {
       if (user == null) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return LoginScreen();
-        }));
+        Future.delayed(const Duration(milliseconds: 2000), () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return LoginScreen();
+          }));
+        });
       }
     });
   }
 
-
   @override
   void initState() {
     super.initState();
-//    _handleAuth();
+    _handleAuth();
   }
 
   @override
@@ -47,7 +48,12 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child: Image.asset('assets/logo.png')),
+          child: Center(
+            child: Hero(
+              tag: 'logo_tag',
+              child: Image.asset('assets/logo.png'),
+            ),
+          ),
         ),
       ),
     );
