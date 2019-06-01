@@ -11,7 +11,7 @@ We use one of our own open source libraries, [GeoFlutterFire](https://github.com
 
 ## The Secret Sauce
 
-Further more, we use a custom TensorFlow Lite model deployed on Firebase's ML Kit to run a basic recommender engine on the set of users who are currently on searching mode within a given location. We use a variety of statistics to check who would be a best match teammate using the data collected.
+Further more, we use a custom TensorFlow Lite model deployed on Firebase's [ML Kit](https://firebase.google.com/products/ml-kit/) to run a basic recommender engine on the set of users who are currently on searching mode within a given location. We use a variety of statistics to check who would be a best match teammate using the data collected.
 
 Some data points that we capture are:
 * The follower/following ratio of each user, to gauge the popularity
