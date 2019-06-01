@@ -1,4 +1,4 @@
-name: flutter_hack
+name: DevMatch
 description: Stackoverflow, but real close
 
 # The following defines the version and build number for your application.
@@ -26,7 +26,6 @@ dependencies:
   firebase_auth: ^0.11.1+5
   cloud_firestore: ^0.11.0+1
   geoflutterfire: ^2.0.3+4
-
   shared_preferences: ^0.5.3
 
 dev_dependencies:
