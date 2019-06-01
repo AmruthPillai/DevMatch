@@ -26,7 +26,10 @@ dependencies:
   firebase_auth: ^0.11.1+5
   cloud_firestore: ^0.11.0+1
   geoflutterfire: ^2.0.3+4
+  http: ^0.12.0+2
   shared_preferences: ^0.5.3
+  location: ^2.3.5
+  pie_chart: ^0.9.0
 
 dev_dependencies:
   flutter_test:
