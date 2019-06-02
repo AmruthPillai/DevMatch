@@ -9,6 +9,10 @@
 
 We use one of our own open source libraries, [GeoFlutterFire](https://github.com/DarshanGowda0/GeoFlutterFire), to collect users who are in searching mode and in a close proximity location, to ensure that we get users who are only within a given range.
 
+## Demo
+
+<img src="https://i.imgur.com/GkRWcPF.gif" alt="GIF Video" />
+
 ## The Secret Sauce
 
 Further more, we use a custom TensorFlow Lite model deployed on Firebase's [ML Kit](https://firebase.google.com/products/ml-kit/) to run a basic recommender engine on the set of users who are currently on searching mode within a given location. We use a variety of statistics to check who would be a best match teammate using the data collected.
